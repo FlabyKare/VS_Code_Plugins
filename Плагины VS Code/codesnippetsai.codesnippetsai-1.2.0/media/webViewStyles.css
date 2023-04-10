@@ -1,0 +1,22 @@
+.code {
+  white-space: pre;
+  color:#eedfff;
+  word-wrap: break-word;
+  max-width:100%;
+}
+#response{
+  overflow:hidden;
+  height:auto;
+}
+
+p {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+ul, ol {
+  list-style: initial !important;
+  margin-left: 10px !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold !important;
+}

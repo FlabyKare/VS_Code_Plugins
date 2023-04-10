@@ -1,0 +1,376 @@
+{
+	"name": "codesnippetsai",
+	"publisher": "codesnippetsai",
+	"icon": "resources/extensionIcon.png",
+	"displayName": "Code Snippets AI - GPT-4",
+	"description": "Turn Your Questions Into Code with GPT-4. Works with JavaScript, TypeScript, Python, C++, Java, PHP, Ruby & Others.",
+	"version": "1.3.3",
+	"repository": {
+		"url": "https://github.com/stefanfmeyer/codesnippets.ai-extension"
+	},
+	"engines": {
+		"vscode": "^1.73.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Snippets",
+		"Machine Learning",
+		"Data Science",
+		"Linters",
+		"Testing",
+		"Education",
+		"Debuggers",
+		"Extension Packs",
+		"Other"
+	],
+	"keywords": [
+		"codesnippets",
+		"codesnippets.ai",
+		"openai",
+		"gpt3",
+		"gpt3.5",
+		"gpt4",
+		"chatgpt",
+		"bard",
+		"lamda",
+		"keybindings",
+		"codex",
+		"codegpt",
+		"cohere",
+		"copilot",
+		"codesnippetsAi",
+		"ai",
+		"copilot",
+		"generate",
+		"debug",
+		"debugging",
+		"find bugs",
+		"explain",
+		"refactor",
+		"snippets",
+		"assistant",
+		"generate",
+		"code debug",
+		"code debugging",
+		"code explain",
+		"code refactor",
+		"code snippets",
+		"code assistant",
+		"nodejs",
+		"snippets",
+		"node",
+		"react",
+		"ruby",
+		"python",
+		"php",
+		"typescript",
+		"csharp",
+		"kotlin",
+		"css",
+		"c",
+		"bash",
+		"rust",
+		"objective-c",
+		"html",
+		"copilot"
+	],
+	"activationEvents": [
+		"onStartupFinished",
+		"onCommand:codesnippetsai.askAi",
+		"onCommand:codesnippetsai.explain",
+		"onCommand:codesnippetsai.refactor",
+		"onCommand:codesnippetsai.optimize",
+		"onCommand:codesnippetsai.findProblems",
+		"onCommand:codesnippetsai.documentation",
+		"onCommand:codesnippetsai.saveSnippet"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"menus": {
+			"editor/context": [
+				{
+					"command": "codesnippetsai.askAi",
+					"group": "codesnippetsai-menu-group@1"
+				},
+				{
+					"command": "codesnippetsai.addTests",
+					"group": "codesnippetsai-menu-group@2",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.findProblems",
+					"group": "codesnippetsai-menu-group@3",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.optimize",
+					"group": "codesnippetsai-menu-group@4",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.explain",
+					"group": "codesnippetsai-menu-group@5",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.addComments",
+					"group": "codesnippetsai-menu-group@6",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.refactor",
+					"group": "codesnippetsai-menu-group@7",
+					"when": "editorHasSelection"
+				},
+				{
+					"command": "codesnippetsai.saveSnippet",
+					"when": "editorHasSelection",
+					"title": "Save Code Snippet",
+					"group": "codesnippetsai-menu-group@8"
+				}
+			]
+		},
+		"keybindings": [
+			{
+				"command": "codesnippetsai.askAi",
+				"key": "ctrl+shift+a",
+				"mac": "cmd+shift+a"
+			},
+			{
+				"command": "codesnippetsai.addTests",
+				"key": "ctrl+k ctrl+shift+1",
+				"mac": "cmd+k cmd+shift+1",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.findProblems",
+				"key": "ctrl+k ctrl+shift+2",
+				"mac": "cmd+k cmd+shift+2",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.optimize",
+				"key": "ctrl+k ctrl+shift+3",
+				"mac": "cmd+k cmd+shift+3",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.explain",
+				"key": "ctrl+k ctrl+shift+4",
+				"mac": "cmd+k cmd+shift+4",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.addComments",
+				"key": "ctrl+k ctrl+shift+5",
+				"mac": "cmd+k cmd+shift+5",
+				"when": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.refactor",
+				"key": "ctrl+k ctrl+shift+6",
+				"mac": "cmd+k cmd+shift+6",
+				"when": "editorHasSelection"
+			}
+		],
+		"commands": [
+			{
+				"command": "codesnippetsai.askAi",
+				"title": "AI -> Ask Anything"
+			},
+			{
+				"command": "codesnippetsai.clearSession",
+				"title": "AI -> Reset session"
+			},
+			{
+				"command": "codesnippetsai.addTests",
+				"title": "AI -> Add tests",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.findProblems",
+				"title": "AI -> Find bugs",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.optimize",
+				"title": "AI -> Optimize",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.explain",
+				"title": "AI -> Explain",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.addComments",
+				"title": "AI -> Add comments",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.refactor",
+				"title": "AI -> Refactor code",
+				"enablement": "editorHasSelection"
+			},
+			{
+				"command": "codesnippetsai.clearConversation",
+				"title": "AI -> Clear conversation"
+			},
+			{
+				"command": "codesnippetsai.saveSnippet",
+				"title": "Save Code Snippet"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "codesnippetsai-view-container",
+					"title": "Code Snippets AI",
+					"icon": "resources/icon.png"
+				}
+			]
+		},
+		"views": {
+			"codesnippetsai-view-container": [
+				{
+					"type": "webview",
+					"id": "codesnippetsai.view",
+					"name": " Chat"
+				},
+				{
+					"id": "codesnippetsai.treeView",
+					"name": "Snippets Library",
+					"icon": "database",
+					"viewType": "firestoreTreeView",
+					"canToggleVisibility": true,
+					"treeView": {
+						"treeDataProvider": "firestoreTreeDataProvider",
+						"showCollapseAll": true
+					}
+				}
+			]
+		},
+		"configuration": {
+			"title": "CodeSnippetsAI",
+			"properties": {
+				"codesnippetsai.promptPrefix.addTests": {
+					"type": "string",
+					"default": "Implement tests for the following code",
+					"description": "The prompt prefix used for adding tests for the selected code",
+					"order": 8
+				},
+				"codesnippetsai.promptPrefix.findProblems": {
+					"type": "string",
+					"default": "Find problems with the following code",
+					"description": "The prompt prefix used for finding problems for the selected code",
+					"order": 10
+				},
+				"codesnippetsai.promptPrefix.optimize": {
+					"type": "string",
+					"default": "Optimize the following code",
+					"description": "The prompt prefix used for optimizing the selected code",
+					"order": 12
+				},
+				"codesnippetsai.promptPrefix.explain": {
+					"type": "string",
+					"default": "Explain the following code",
+					"description": "The prompt prefix used for explaining the selected code",
+					"order": 14
+				},
+				"codesnippetsai.promptPrefix.addComments": {
+					"type": "string",
+					"default": "Add comments for the following code",
+					"description": "The prompt prefix used for adding comments for the selected code",
+					"order": 16
+				},
+				"codesnippetsai.promptPrefix.refactor": {
+					"type": "string",
+					"default": "Refactor the following code",
+					"description": "The prompt prefix used for refactoring the selected code",
+					"order": 18
+				},
+				"codesnippetsai.gpt.accessToken": {
+					"type": "string",
+					"markdownDescription": "Access Token from your CodeSnippets.ai Account",
+					"order": 0
+				},
+				"codesnippetsai.response.showNotification": {
+					"type": "boolean",
+					"default": false,
+					"description": "Choose whether you'd like to receive a notification when CodeSnippetsAI bot responds to your query.",
+					"order": 37
+				},
+				"codesnippetsai.response.autoScroll": {
+					"type": "boolean",
+					"default": true,
+					"description": "Whenever there is a new question or response added to the conversation window, extension will automatically scroll to the bottom. You can change that behavior by disabling this setting.",
+					"order": 38
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "rimraf out && npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"build": "npm run -S esbuild-base -- --sourcemap",
+		"watch": "npm run -S esbuild-base -- --sourcemap --watch",
+		"fmt": "prettier --write \"src/**/*.ts\"&& npm run test -- --fix",
+		"test": "eslint src --ext ts && tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.0.0",
+		"@types/isomorphic-fetch": "^0.0.36",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "16.x",
+		"@types/uuid": "^9.0.0",
+		"@types/vscode": "^1.73.0",
+		"@types/vscode-webview": "^1.57.0",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"@vscode/test-electron": "^2.2.0",
+		"esbuild": "^0.15.18",
+		"eslint": "^8.28.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.1.0",
+		"ts-loader": "^9.4.1",
+		"typescript": "^4.9.3"
+	},
+	"dependencies": {
+		"@google-cloud/firestore": "^6.5.0",
+		"@types/body-parser": "^1.19.2",
+		"axios": "^1.3.4",
+		"delay": "^5.0.0",
+		"eventsource-parser": "^0.1.0",
+		"firebase": "^9.18.0",
+		"firebase-admin": "^11.5.0",
+		"gpt3-tokenizer": "^1.1.5",
+		"isomorphic-fetch": "^3.0.0",
+		"keyv": "^4.5.2",
+		"openai": "^3.2.1",
+		"p-timeout": "^6.1.1",
+		"puppeteer": "^19.4.0",
+		"puppeteer-extra": "^3.3.4",
+		"puppeteer-extra-plugin-stealth": "^2.11.1",
+		"puppeteer-extra-plugin-user-data-dir": "^2.4.0",
+		"puppeteer-extra-plugin-user-preferences": "^2.4.0",
+		"quick-lru": "^6.1.1",
+		"remark": "^14.0.2",
+		"strip-markdown": "^5.0.0",
+		"uuid": "^9.0.0",
+		"zod": "^3.21.4"
+	},
+	"resolutions": {
+		"clone-deep": "^4.0.1"
+	},
+	"__metadata": {
+		"id": "18a6fd50-025e-4b92-9fc2-2b46deb812e6",
+		"publisherId": "0d663981-b9ea-4e9f-91d8-c1a01473ce25",
+		"publisherDisplayName": "Code Snippets AI",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"updated": true,
+		"isPreReleaseVersion": false,
+		"installedTimestamp": 1680007958819,
+		"preRelease": false
+	}
+}
